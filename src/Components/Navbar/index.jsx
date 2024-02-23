@@ -33,7 +33,7 @@ export function Navbar() {
         return (
           <>
             <li className='text-black/60'>
-              itzel@hotmail.com
+              {parsedAccount?.email}
             </li>
             <li>
               <NavLink
