@@ -1,7 +1,18 @@
 import { Layout } from "../../Layout"
 import { Link } from "react-router-dom"
+import { ShoppingCartContext } from "../../Context"
+import { useContext } from "react"
 
 export function SignIn() {
+  const context = useContext(ShoppingCartContext)
+
+  // Account
+  const account = localStorage.getItem('account')
+  const parsedAccount = JSON.parse(account)
+  // Has an account
+  const noAccountInLocalStorage = parsedAccount ? Object.keys(parsedAccount).length === 0 : true
+  const noAccountInLocalState = context.account ? Object.keys(context.account).length === 0 : true
+  const hasUserAnAccount = !noAccountInLocalStorage || !noAccountInLocalState
 
     return (
       <Layout>
@@ -9,16 +20,17 @@ export function SignIn() {
       <div className='flex flex-col w-80'>
         <p>
           <span className='font-light text-sm'>Email: </span>
-          <span>itzel@hotmail.com</span>
+          <span>{parsedAccount?.email}</span>
         </p>
         <p>
           <span className='font-light text-sm'>Password: </span>
-          <span>******</span>
+          <span>{parsedAccount?.password}</span>
         </p>
         <Link
           to="/">
           <button
-            className='bg-black disabled:bg-black/40 text-white  w-full rounded-lg py-3 mt-4 mb-2'>
+            className='bg-black disabled:bg-black/40 text-white  w-full rounded-lg py-3 mt-4 mb-2'
+            disabled={!hasUserAnAccount}>
             Log in
           </button>
         </Link>
@@ -27,7 +39,8 @@ export function SignIn() {
         </div>
         <button
           className='border border-black disabled:text-black/40 disabled:border-black/40
-          rounded-lg mt-6 py-3'>
+          rounded-lg mt-6 py-3'
+          disabled={hasUserAnAccount}>
           Sign up
         </button>
       </div>
