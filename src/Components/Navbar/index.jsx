@@ -13,13 +13,15 @@ export function Navbar() {
         <nav className="w-full flex justify-between items-center fixed z-10 top-0 py-5 px-8 text-sm font-light">
             <ul className="flex items-center gap-3">
                 <li className="font-semibold text-lg">
-                    <NavLink to={'/'}>
+                    <NavLink to={'/'}
+                    onClick={()=> context.setSearchByTitle('a')}>
                         Shopi
                     </NavLink>
                 </li>
                 <li>
                     <NavLink 
                     to={'/'}
+                    onClick={()=> context.setSearchByTitle('a')}
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined}>
                         All
@@ -28,6 +30,7 @@ export function Navbar() {
                 <li>
                     <NavLink 
                     to={'/clothing'}
+                    onClick={()=> context.setSearchByTitle('a')}
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined}>
                         Clothes
@@ -36,6 +39,7 @@ export function Navbar() {
                 <li>
                     <NavLink 
                     to={'/electronics'}
+                    onClick={()=> context.setSearchByTitle('a')}
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined}>
                         Electronics
@@ -44,6 +48,7 @@ export function Navbar() {
                 <li>
                     <NavLink 
                     to={'/jewelery'}
+                    onClick={()=> context.setSearchByTitle('a')}
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined}>
                         Jewerely
@@ -52,6 +57,7 @@ export function Navbar() {
                 <li>
                     <NavLink 
                     to={'/toys'}
+                    onClick={()=> context.setSearchByTitle('toys')}
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined}>
                         Toys
@@ -60,6 +66,7 @@ export function Navbar() {
                 <li>
                     <NavLink 
                     to={'/others'}
+                    onClick={()=> context.setSearchByTitle('others')}
                     className={({isActive}) => 
                         isActive ? activeStyle : undefined}>
                         Others
